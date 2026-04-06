@@ -5,6 +5,7 @@ import { useStore } from "@/lib/store";
 import { getProductById, formatPrice } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
   const cart = useStore((s) => s.cart);
@@ -12,6 +13,7 @@ export default function Sidebar() {
   const closeSidebar = useStore((s) => s.closeSidebar);
   const removeFromCart = useStore((s) => s.removeFromCart);
   const updateQuantity = useStore((s) => s.updateQuantity);
+  const router = useRouter();
 
   const cartTotal = cart.reduce((sum, item) => {
     const product = getProductById(item.productId);
@@ -35,7 +37,7 @@ export default function Sidebar() {
       {/* Panel */}
       <aside
         id="cart-sidebar"
-        className={`fixed top-0 right-0 h-full w-full max-w-md z-[70] bg-[var(--color-bg)] flex flex-col transition-all duration-400 ${
+        className={`fixed top-0 right-0 h-full w-full max-w-md z-[70] bg-[var(--color-bg)] flex flex-col transition-all duration-400 cursor-auto ${
           isOpen
             ? "opacity-100 translate-x-0"
             : "opacity-0 translate-x-full pointer-events-none"
@@ -209,7 +211,14 @@ export default function Sidebar() {
                 {formatPrice(cartTotal)}
               </span>
             </div>
-            <button className="btn-primary" id="checkout-button">
+            <button
+              className="btn-primary"
+              id="checkout-button"
+              onClick={() => {
+                closeSidebar();
+                router.push("/odeme");
+              }}
+            >
               Ödemeye Geç
             </button>
           </div>

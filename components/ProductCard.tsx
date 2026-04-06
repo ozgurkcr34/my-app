@@ -15,7 +15,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       className="group block"
     >
       {/* Image Container */}
-      <div className="relative">
+      <div className="relative" data-cursor="view">
         <ProductImage
           src={product.images[0]}
           alt={product.name}

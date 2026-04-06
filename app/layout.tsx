@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -20,9 +21,36 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "GÖNÜL'DEN KOPANLAR — El Emeği, Gönül Bağı",
+  title: {
+    default: "GÖNÜL'DEN KOPANLAR — El Emeği, Gönül Bağı",
+    template: "%s | GÖNÜL'DEN KOPANLAR",
+  },
   description:
     "Anadolu'nun zanaatkâr ruhunu modern yaşama taşıyan butik el yapımı ürünler. Kilim, seramik, deri aksesuar ve daha fazlası.",
+  keywords: [
+    "el yapımı",
+    "zanaatkâr",
+    "Anadolu",
+    "kilim",
+    "seramik",
+    "deri",
+    "butik",
+    "gönülden kopanlar",
+  ],
+  openGraph: {
+    title: "GÖNÜL'DEN KOPANLAR — El Emeği, Gönül Bağı",
+    description:
+      "Anadolu'nun zanaatkâr ruhunu modern yaşama taşıyan butik el yapımı ürünler.",
+    type: "website",
+    locale: "tr_TR",
+    siteName: "GÖNÜL'DEN KOPANLAR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GÖNÜL'DEN KOPANLAR",
+    description:
+      "Anadolu'nun zanaatkâr ruhunu modern yaşama taşıyan butik el yapımı ürünler.",
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +59,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className={`${playfair.variable} ${inter.variable}`}>
+    <html
+      lang="tr"
+      className={`${playfair.variable} ${inter.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <head>
         <style
           dangerouslySetInnerHTML={{
@@ -44,7 +76,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
+      <body className="min-h-screen flex flex-col antialiased cursor-none">
+        <CustomCursor />
         <Navigation />
         <main className="flex-1 pt-12 md:pt-12">{children}</main>
         <Sidebar />

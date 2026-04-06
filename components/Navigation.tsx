@@ -15,7 +15,6 @@ export default function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
-      // Show when scrolling up or at top, hide when scrolling down past 80px
       if (currentY < 80) {
         setVisible(true);
       } else if (currentY < lastScrollY.current) {
@@ -33,7 +32,7 @@ export default function Navigation() {
   return (
     <nav
       id="main-navigation"
-      className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]"
+      className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)] cursor-auto"
       style={{
         borderBottom: "1px solid var(--color-fg)",
         transform: visible ? "translateY(0)" : "translateY(-100%)",
@@ -44,7 +43,7 @@ export default function Navigation() {
         {/* Brand */}
         <Link
           href="/"
-          className="font-[var(--font-serif)] text-base tracking-tight"
+          className="text-base tracking-tight"
           style={{ fontFamily: "var(--font-serif)" }}
         >
           GK
@@ -62,7 +61,7 @@ export default function Navigation() {
             href="/koleksiyon/ev-tekstil"
             className="small-caps tracking-wide-custom text-xs link-underline"
           >
-            Ev & Tekstil
+            Ev &amp; Tekstil
           </Link>
           <Link
             href="/koleksiyon/seramik"
@@ -75,6 +74,12 @@ export default function Navigation() {
             className="small-caps tracking-wide-custom text-xs link-underline"
           >
             Aksesuar
+          </Link>
+          <Link
+            href="/hakkimizda"
+            className="small-caps tracking-wide-custom text-xs link-underline"
+          >
+            Hakkımızda
           </Link>
         </div>
 
@@ -99,32 +104,38 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <div
-        className="flex md:hidden items-center justify-center gap-6 h-10"
-        style={{ borderTop: "1px solid var(--color-border-light)" }}
+        className="flex md:hidden items-center justify-center gap-5 h-10 overflow-x-auto"
+        style={{ borderTop: "1px solid var(--color-fg)" }}
       >
         <Link
           href="/koleksiyon"
-          className="small-caps tracking-wide-custom text-[10px] link-underline"
+          className="small-caps tracking-wide-custom text-[10px] link-underline shrink-0"
         >
           Koleksiyon
         </Link>
         <Link
           href="/koleksiyon/ev-tekstil"
-          className="small-caps tracking-wide-custom text-[10px] link-underline"
+          className="small-caps tracking-wide-custom text-[10px] link-underline shrink-0"
         >
           Tekstil
         </Link>
         <Link
           href="/koleksiyon/seramik"
-          className="small-caps tracking-wide-custom text-[10px] link-underline"
+          className="small-caps tracking-wide-custom text-[10px] link-underline shrink-0"
         >
           Seramik
         </Link>
         <Link
           href="/koleksiyon/aksesuar"
-          className="small-caps tracking-wide-custom text-[10px] link-underline"
+          className="small-caps tracking-wide-custom text-[10px] link-underline shrink-0"
         >
           Aksesuar
+        </Link>
+        <Link
+          href="/hakkimizda"
+          className="small-caps tracking-wide-custom text-[10px] link-underline shrink-0"
+        >
+          Hakkımızda
         </Link>
       </div>
     </nav>

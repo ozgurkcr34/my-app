@@ -63,7 +63,12 @@ export default function Footer() {
               Bilgi
             </p>
             <div className="flex flex-col gap-2.5">
-              <span className="text-[11px] tracking-wide-custom">Hakkımızda</span>
+              <Link
+                href="/hakkimizda"
+                className="text-[11px] tracking-wide-custom link-underline w-fit"
+              >
+                Hakkımızda
+              </Link>
               <span className="text-[11px] tracking-wide-custom">Kargo & İade</span>
               <span className="text-[11px] tracking-wide-custom">Gizlilik Politikası</span>
             </div>
