@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
 import { useStore } from "@/lib/store";
@@ -8,11 +9,36 @@ export default function Navigation() {
   const toggleSidebar = useStore((s) => s.toggleSidebar);
   const cartItemCount = useStore((s) => s.cartItemCount);
 
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      // Show when scrolling up or at top, hide when scrolling down past 80px
+      if (currentY < 80) {
+        setVisible(true);
+      } else if (currentY < lastScrollY.current) {
+        setVisible(true);
+      } else if (currentY > lastScrollY.current) {
+        setVisible(false);
+      }
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <nav
       id="main-navigation"
       className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]"
-      style={{ borderBottom: "1px solid var(--color-fg)" }}
+      style={{
+        borderBottom: "1px solid var(--color-fg)",
+        transform: visible ? "translateY(0)" : "translateY(-100%)",
+        transition: "transform 0.3s ease",
+      }}
     >
       <div className="flex items-center justify-between px-6 md:px-10 h-12">
         {/* Brand */}
