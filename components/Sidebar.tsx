@@ -4,6 +4,7 @@ import { X, Minus, Plus } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { getProductById, formatPrice } from "@/lib/products";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Sidebar() {
   const cart = useStore((s) => s.cart);
@@ -19,11 +20,14 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop with blur */}
       <div
-        className={`fixed inset-0 z-[60] bg-black/40 transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-[60] transition-all duration-500 ${
+          isOpen
+            ? "opacity-100 backdrop-blur-[2px]"
+            : "opacity-0 pointer-events-none"
         }`}
+        style={{ background: "rgba(0, 0, 0, 0.3)" }}
         onClick={closeSidebar}
         aria-hidden="true"
       />
@@ -31,8 +35,10 @@ export default function Sidebar() {
       {/* Panel */}
       <aside
         id="cart-sidebar"
-        className={`fixed top-0 right-0 h-full w-full max-w-md z-[70] bg-[var(--color-bg)] flex flex-col transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed top-0 right-0 h-full w-full max-w-md z-[70] bg-[var(--color-bg)] flex flex-col transition-all duration-400 ${
+          isOpen
+            ? "opacity-100 translate-x-0"
+            : "opacity-0 translate-x-full pointer-events-none"
         }`}
         style={{ borderLeft: "1px solid var(--color-fg)" }}
       >
@@ -46,7 +52,7 @@ export default function Sidebar() {
           </span>
           <button
             onClick={closeSidebar}
-            className="cursor-pointer bg-transparent border-none"
+            className="cursor-pointer bg-transparent border-none p-1"
             aria-label="Sepeti kapat"
           >
             <X size={18} strokeWidth={1} />
@@ -56,10 +62,37 @@ export default function Sidebar() {
         {/* Items */}
         <div className="flex-1 overflow-y-auto">
           {cart.length === 0 ? (
-            <div className="flex items-center justify-center h-full">
-              <p className="text-[var(--color-muted)] text-xs tracking-wide-custom">
+            /* ─── Empty Cart ─── */
+            <div className="flex flex-col items-center justify-center h-full px-6">
+              {/* Large decorative mark */}
+              <span
+                className="text-[80px] leading-none mb-6"
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  color: "var(--color-border-light)",
+                }}
+                aria-hidden="true"
+              >
+                ∅
+              </span>
+              <p
+                className="text-lg mb-2"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
                 Sepetiniz boş
               </p>
+              <p className="text-xs text-[var(--color-muted)] tracking-wide-custom mb-8 text-center leading-relaxed">
+                Anadolu&apos;nun zanaatkâr ruhunu
+                <br />
+                keşfetmeye başlayın.
+              </p>
+              <Link
+                href="/koleksiyon"
+                className="btn-primary inline-flex w-auto px-10"
+                onClick={closeSidebar}
+              >
+                Koleksiyonu Keşfet
+              </Link>
             </div>
           ) : (
             <div>
@@ -70,10 +103,18 @@ export default function Sidebar() {
                   <div
                     key={item.productId}
                     className="flex gap-4 px-6 py-5"
-                    style={{ borderBottom: "1px solid var(--color-border-light)" }}
+                    style={{
+                      borderBottom: "1px solid var(--color-fg)",
+                    }}
                   >
                     {/* Image */}
-                    <div className="w-20 h-[106px] relative shrink-0 overflow-hidden border-sharp">
+                    <div
+                      className="w-20 h-[106px] relative shrink-0 overflow-hidden"
+                      style={{
+                        border: "1px solid var(--color-fg)",
+                        background: "#EEEEEE",
+                      }}
+                    >
                       <Image
                         src={product.images[0]}
                         alt={product.name}
@@ -92,37 +133,53 @@ export default function Sidebar() {
                         >
                           {product.name}
                         </p>
-                        <p className="text-xs text-[var(--color-muted)]">
+                        <p className="text-[11px] text-[var(--color-muted)] tracking-wide-custom">
                           {formatPrice(product.price)}
                         </p>
                       </div>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
+                        <div
+                          className="flex items-center"
+                          style={{ border: "1px solid var(--color-fg)" }}
+                        >
                           <button
                             onClick={() =>
-                              updateQuantity(item.productId, item.quantity - 1)
+                              updateQuantity(
+                                item.productId,
+                                item.quantity - 1
+                              )
                             }
-                            className="cursor-pointer bg-transparent border-none"
+                            className="cursor-pointer bg-transparent border-none w-8 h-8 flex items-center justify-center"
                             aria-label="Azalt"
                           >
-                            <Minus size={14} strokeWidth={1} />
+                            <Minus size={12} strokeWidth={1} />
                           </button>
-                          <span className="text-xs w-4 text-center">
+                          <span
+                            className="text-xs w-6 text-center"
+                            style={{
+                              borderLeft: "1px solid var(--color-fg)",
+                              borderRight: "1px solid var(--color-fg)",
+                              lineHeight: "32px",
+                            }}
+                          >
                             {item.quantity}
                           </span>
                           <button
                             onClick={() =>
-                              updateQuantity(item.productId, item.quantity + 1)
+                              updateQuantity(
+                                item.productId,
+                                item.quantity + 1
+                              )
                             }
-                            className="cursor-pointer bg-transparent border-none"
+                            className="cursor-pointer bg-transparent border-none w-8 h-8 flex items-center justify-center"
                             aria-label="Artır"
                           >
-                            <Plus size={14} strokeWidth={1} />
+                            <Plus size={12} strokeWidth={1} />
                           </button>
                         </div>
                         <button
                           onClick={() => removeFromCart(item.productId)}
-                          className="text-[10px] tracking-wide-custom text-[var(--color-muted)] underline cursor-pointer bg-transparent border-none"
+                          className="text-[10px] tracking-wide-custom text-[var(--color-muted)] cursor-pointer bg-transparent border-none link-underline"
                         >
                           Kaldır
                         </button>
@@ -145,7 +202,10 @@ export default function Sidebar() {
               <span className="small-caps tracking-wide-custom text-xs">
                 Toplam
               </span>
-              <span className="text-sm" style={{ fontFamily: "var(--font-serif)" }}>
+              <span
+                className="text-sm"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
                 {formatPrice(cartTotal)}
               </span>
             </div>

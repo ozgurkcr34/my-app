@@ -7,7 +7,7 @@
   --color-white: #FFFFFF;
   --color-muted: #6B6B6B;
   --color-border: #000000;
-  --color-border-light: #D4D4D4;
+  --color-border-light: #000000;
   --font-serif: "Playfair Display", "Georgia", serif;
   --font-sans: "Inter", "Helvetica Neue", "Arial", sans-serif;
 }
@@ -91,20 +91,18 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--color-fg);
 }
 
-.grain-overlay {
-  position: relative;
+/* ─── Accordion Reset ─── */
+details summary {
+  list-style: none;
 }
 
-.grain-overlay::after {
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::marker {
+  display: none;
   content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 128px 128px;
-  mix-blend-mode: multiply;
 }
 
 /* ─── Link Underline Animation ─── */
@@ -144,6 +142,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--color-fg);
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 }
 
 .btn-primary:hover {

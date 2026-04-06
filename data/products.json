@@ -6,8 +6,10 @@
     "currency": "TRY",
     "category": "ev-tekstil",
     "categoryLabel": "Ev & Tekstil",
+    "badge": "Sınırlı Üretim",
     "description": "Anadolu'nun kadim dokuma geleneğinden ilham alan bu kilim, doğal boyalarla renklendirilmiş saf yünden elle dokunmuştur. Her bir motif, nesiller boyu aktarılan hikayeleri taşır.",
     "details": ["100% Doğal Yün", "El dokuması", "120×180 cm", "Doğal bitkisel boya"],
+    "care": ["Kuru temizleme önerilir", "Direkt güneş ışığından kaçının", "Düz zemin üzerinde saklayın"],
     "images": ["/images/products/kilim-01.png"],
     "inStock": true
   },
@@ -18,8 +20,10 @@
     "currency": "TRY",
     "category": "ev-tekstil",
     "categoryLabel": "Ev & Tekstil",
+    "badge": "El Yapımı",
     "description": "Ege pamuğundan el tezgâhında dokunan peştamal, hem hamam kültürünü hem de modern yaşamı bir arada sunar. Yıkandıkça yumuşar, kullandıkça güzelleşir.",
     "details": ["100% Ege Pamugu", "El tezgâhı dokuması", "90×170 cm", "Doğal indigo boya"],
+    "care": ["30°C'de yıkayın", "Çamaşır suyu kullanmayın", "Gölgede kurutun"],
     "images": ["/images/products/pestemal-01.png"],
     "inStock": true
   },
@@ -30,8 +34,10 @@
     "currency": "TRY",
     "category": "ev-tekstil",
     "categoryLabel": "Ev & Tekstil",
+    "badge": null,
     "description": "Doğal boyasız yünden dokunan bu battaniye, sadeliğin zarafetini taşır. Balıksırtı deseni, geleneksel Anadolu dokumacılığının izlerini modern çizgilere taşır.",
     "details": ["100% Doğal Yün", "Boyasız, doğal renk", "140×200 cm", "Balıksırtı desen"],
+    "care": ["Kuru temizleme önerilir", "Hava aldırarak tazeleyin", "Katlanarak saklayın"],
     "images": ["/images/products/battaniye-01.png"],
     "inStock": true
   },
@@ -42,8 +48,10 @@
     "currency": "TRY",
     "category": "seramik",
     "categoryLabel": "Seramik",
+    "badge": "El Yapımı",
     "description": "Elle şekillendirilmiş bu kâse, her dokunuşta zanaatkârın elini hissettirir. Benekli sır tekniği, her parçayı eşsiz kılar.",
     "details": ["Elle şekillendirilmiş", "Gıdaya uygun sır", "Çap: 18 cm", "Bulaşık makinesine uygun"],
+    "care": ["Bulaşık makinesinde yıkanabilir", "Mikrodalgaya uygun", "Ani sıcaklık değişiminden kaçının"],
     "images": ["/images/products/seramik-kase-01.png"],
     "inStock": true
   },
@@ -54,8 +62,10 @@
     "currency": "TRY",
     "category": "seramik",
     "categoryLabel": "Seramik",
+    "badge": "Sınırlı Üretim",
     "description": "Organik formuyla dikkat çeken bu vazo, doğanın düzensiz güzelliğini seramik sanatıyla buluşturur. Koyu antrasit mat sırı, minimalist mekânlara karakter katar.",
     "details": ["Elle şekillendirilmiş", "Mat antrasit sır", "Yükseklik: 28 cm", "Su geçirmez"],
+    "care": ["Elde yıkamayı tercih edin", "Yumuşak bezle silin", "Direkt güneş ışığından kaçının"],
     "images": ["/images/products/seramik-vazo-01.png"],
     "inStock": true
   },
@@ -66,8 +76,10 @@
     "currency": "TRY",
     "category": "seramik",
     "categoryLabel": "Seramik",
+    "badge": "El Yapımı",
     "description": "Üç farklı toprak tonunda elle yapılmış espresso fincanları. Rustik sır dokusu ve ergonomik form, kahve ritüelinize özel bir dokunuş katar.",
     "details": ["3'lü set", "Elle yapılmış", "Hacim: 80 ml", "Gıdaya uygun sır"],
+    "care": ["Elde yıkamayı tercih edin", "Sert deterjanlardan kaçının", "Şoklanmayı önlemek için ılık suyla yıkayın"],
     "images": ["/images/products/fincan-seti-01.png"],
     "inStock": true
   },
@@ -78,8 +90,10 @@
     "currency": "TRY",
     "category": "aksesuar",
     "categoryLabel": "Aksesuar",
+    "badge": "Sınırlı Üretim",
     "description": "Bitkisel tabaklanmış dana derisinden el dikişiyle üretilen bu çanta, zamanla kişiselleşen bir patinaya sahiptir. Minimalist tasarımı, her stile uyum sağlar.",
     "details": ["Bitkisel tabaklanmış deri", "El dikişi", "28×22×8 cm", "Ayarlanabilir askı"],
+    "care": ["Deri bakım kremi ile besleyin", "Islak bezle silin", "Dolgu ile saklayın"],
     "images": ["/images/products/deri-canta-01.png"],
     "inStock": true
   },
@@ -90,8 +104,10 @@
     "currency": "TRY",
     "category": "aksesuar",
     "categoryLabel": "Aksesuar",
+    "badge": "El Yapımı",
     "description": "Dövme pirinçten elle şekillendirilmiş halka küpeler. Çekiçlenmiş doku, ışığı eşsiz biçimde yakalar ve her açıdan farklı bir karakter sunar.",
     "details": ["Dövme pirinç", "El yapımı", "Çap: 3.5 cm", "Nikel içermez"],
+    "care": ["Nemden uzak tutun", "Parfüm ve losyonla temastan kaçının", "Parlatma bezi ile silin"],
     "images": ["/images/products/kupe-01.png"],
     "inStock": true
   }

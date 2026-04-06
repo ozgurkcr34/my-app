@@ -7,8 +7,10 @@ export interface Product {
   currency: string;
   category: string;
   categoryLabel: string;
+  badge: string | null;
   description: string;
   details: string[];
+  care: string[];
   images: string[];
   inStock: boolean;
 }
